@@ -5,7 +5,6 @@ import 'package:task_1/Model_Files/login_response.dart';
 import 'package:task_1/Model_Files/userdata.dart';
 import 'package:task_1/Model_Files/userlist_data.dart';
 import 'package:task_1/api/dio.dart';
-import 'package:task_1/repositories/response_repository_provider.dart';
 
 class UserListRepository {
   final Dio client;
@@ -21,7 +20,7 @@ class UserListRepository {
         final jsonData = response.data as Map<String, dynamic>;
         final result = UserListResponse.fromJson(jsonData);
         final resultNew = result.data;
-        print("DIO RESPONSE === ${result.toString()}");
+        print("DIO RESPONSE ===== ${result.toString()}");
         return resultNew;
       }
       throw Exception('Failed to load data');
