@@ -21,11 +21,9 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LoginResponse {
   int? get id => throw _privateConstructorUsedError;
-
   String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $LoginResponseCopyWith<LoginResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $LoginResponseCopyWith<$Res> {
   factory $LoginResponseCopyWith(
           LoginResponse value, $Res Function(LoginResponse) then) =
       _$LoginResponseCopyWithImpl<$Res, LoginResponse>;
-
   @useResult
   $Res call({int? id, String? token});
 }
@@ -48,7 +45,6 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$LoginResponseImplCopyWith<$Res>
   factory _$$LoginResponseImplCopyWith(
           _$LoginResponseImpl value, $Res Function(_$LoginResponseImpl) then) =
       __$$LoginResponseImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int? id, String? token});
@@ -164,10 +159,8 @@ abstract class _LoginResponse implements LoginResponse {
 
   @override
   int? get id;
-
   @override
   String? get token;
-
   @override
   @JsonKey(ignore: true)
   _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>

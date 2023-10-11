@@ -21,19 +21,14 @@ UserData _$UserDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserData {
   int? get id => throw _privateConstructorUsedError;
-
   String? get email => throw _privateConstructorUsedError;
-
   @JsonKey(name: "first_name")
   String? get firstName => throw _privateConstructorUsedError;
-
   @JsonKey(name: "last_name")
   String? get lastName => throw _privateConstructorUsedError;
-
   String? get avatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserDataCopyWith<UserData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -43,7 +38,6 @@ mixin _$UserData {
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res, UserData>;
-
   @useResult
   $Res call(
       {int? id,
@@ -60,7 +54,6 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -104,7 +97,6 @@ abstract class _$$UserDataImplCopyWith<$Res>
   factory _$$UserDataImplCopyWith(
           _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
       __$$UserDataImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -234,21 +226,16 @@ abstract class _UserData implements UserData {
 
   @override
   int? get id;
-
   @override
   String? get email;
-
   @override
   @JsonKey(name: "first_name")
   String? get firstName;
-
   @override
   @JsonKey(name: "last_name")
   String? get lastName;
-
   @override
   String? get avatar;
-
   @override
   @JsonKey(ignore: true)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>

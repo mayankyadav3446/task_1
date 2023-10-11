@@ -21,19 +21,14 @@ UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserListResponse {
   int? get page => throw _privateConstructorUsedError;
-
   @JsonKey(name: "per_page")
   int? get perPage => throw _privateConstructorUsedError;
-
   int? get total => throw _privateConstructorUsedError;
-
   @JsonKey(name: "total_pages")
   int? get totalPages => throw _privateConstructorUsedError;
-
   List<UserData>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserListResponseCopyWith<UserListResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +39,6 @@ abstract class $UserListResponseCopyWith<$Res> {
   factory $UserListResponseCopyWith(
           UserListResponse value, $Res Function(UserListResponse) then) =
       _$UserListResponseCopyWithImpl<$Res, UserListResponse>;
-
   @useResult
   $Res call(
       {int? page,
@@ -61,7 +55,6 @@ class _$UserListResponseCopyWithImpl<$Res, $Val extends UserListResponse>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -105,7 +98,6 @@ abstract class _$$UserListResponseImplCopyWith<$Res>
   factory _$$UserListResponseImplCopyWith(_$UserListResponseImpl value,
           $Res Function(_$UserListResponseImpl) then) =
       __$$UserListResponseImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -185,7 +177,6 @@ class _$UserListResponseImpl
   @JsonKey(name: "total_pages")
   final int? totalPages;
   final List<UserData>? _data;
-
   @override
   List<UserData>? get data {
     final value = _data;
@@ -258,21 +249,16 @@ abstract class _UserListResponse implements UserListResponse {
 
   @override
   int? get page;
-
   @override
   @JsonKey(name: "per_page")
   int? get perPage;
-
   @override
   int? get total;
-
   @override
   @JsonKey(name: "total_pages")
   int? get totalPages;
-
   @override
   List<UserData>? get data;
-
   @override
   @JsonKey(ignore: true)
   _$$UserListResponseImplCopyWith<_$UserListResponseImpl> get copyWith =>
