@@ -5,15 +5,14 @@ import 'package:task_1/Model_Files/login_response.dart';
 import 'package:task_1/Model_Files/userdata.dart';
 import 'package:task_1/Model_Files/userlist_data.dart';
 import 'package:task_1/api/dio.dart';
-
-
+import 'package:task_1/repositories/response_repository_provider.dart';
 
 class UserListRepository {
   final Dio client;
 
   UserListRepository({required this.client});
 
-  Future<UserListResponse> getUsersList() async {
+  Future<List<UserData>?> getUsersList() async {
     try {
       final response = await client.get("users?page=1");
       print(response);
@@ -21,80 +20,46 @@ class UserListRepository {
         print("Inside DIO Get Data 1");
         final jsonData = response.data as Map<String, dynamic>;
         final result = UserListResponse.fromJson(jsonData);
-
+        final resultNew = result.data;
         print("DIO RESPONSE === ${result.toString()}");
-        return result;
+        return resultNew;
       }
       throw Exception('Failed to load data');
     } catch (e) {
-      print("catch block rethrow $e ");
+      print("catch block rethrow1 $e ");
       rethrow;
     }
   }
 
-  Future<LoginResponse> login(String email, String password) async {
+  Future<LoginResponse> login(Map<String, dynamic> data) async {
     try {
-      final response = await client.post(
-        "login",
-        data: {
-          "email": email,
-          "password": password,
-        },
-      );
+      final response = await client.post("/login", data: data);
 
       if (response.statusCode == 200) {
-        final jsonData = response.data as Map<String, dynamic>;
-        final token = jsonData['token'] as String;
-        final id = jsonData['id'] as int;
-        return LoginResponse(token: token, id: id); // Return a LoginResponse object
+        final body = response.data;
+        return LoginResponse.fromJson(body);
       } else {
-        throw Exception('Failed to load data');
+        throw Exception("Something went wrong!!");
       }
     } catch (e) {
-      print("catch block rethrow $e");
-      rethrow;
+      throw Exception("Something went wrong!!");
     }
   }
 
-  Future<LoginResponse> register(String email, String password) async {
+  Future<LoginResponse> register(Map<String, dynamic> data) async {
     try {
-      final response = await client.post(
-        "register",
-        data: {
-          "email": email,
-          "password": password,
-        },
-      );
-
+      final response = await client.post("/register", data: data);
       if (response.statusCode == 200) {
-        final jsonData = response.data as Map<String, dynamic>;
-        final token = jsonData['token'] as String;
-        final id = jsonData['id'] as int;
-        return LoginResponse(token: token, id: id); // Return a LoginResponse object
+        final body = response.data;
+        return LoginResponse.fromJson(body);
       } else {
-        throw Exception('Failed to load data');
+        throw Exception("Something went wrong!!");
       }
     } catch (e) {
-      print("catch block rethrow $e");
-      rethrow;
+      throw Exception("Something went wrong!!");
     }
   }
-
-
-// List<UserDataModel> getFilteredData(String searchTerm, List<UserDataModel> users) {
-  //   final filteredUserData = users.where((user) {
-  //     final fullName = '${user.firstName} ${user.lastName}'.toLowerCase();
-  //     return fullName.contains(searchTerm);
-  //   }).toList();
-  //   return filteredUserData;
-  // }
-
 }
-final loginRepositoryProvider = Provider.autoDispose<UserListRepository>((ref) {
-  final loginRepo = UserListRepository(client: ref.watch(dioProvider));
-  ref.onDispose(() => loginRepo);
-  return loginRepo;
-});
 
 final userRepositoryProvider = Provider.autoDispose<UserListRepository>((ref) {
   final registerRepo = UserListRepository(client: ref.watch(dioProvider));
@@ -102,8 +67,8 @@ final userRepositoryProvider = Provider.autoDispose<UserListRepository>((ref) {
   return registerRepo;
 });
 
-final dashboardRepositoryProvider = Provider.autoDispose<UserListRepository>((ref) {
-  final dashboardRepo = UserListRepository(client: ref.watch(dioProvider));
-  ref.onDispose(() => dashboardRepo);
-  return dashboardRepo;
+final loginRepositoryProvider = Provider.autoDispose<UserListRepository>((ref) {
+  final loginRepo = UserListRepository(client: ref.watch(dioProvider));
+  ref.onDispose(() => loginRepo);
+  return loginRepo;
 });
